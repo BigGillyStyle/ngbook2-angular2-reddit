@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Article } from './article.model';
+import {
+  Component,
+  OnInit,
+  Input
+} from '@angular/core';
+import {Article} from './article.model';
 
 @Component({
   selector: 'app-article',
@@ -10,26 +14,19 @@ import { Article } from './article.model';
   }
 })
 export class ArticleComponent implements OnInit {
-  article: Article;
+  @Input() article: Article;
 
-  constructor() {
-    this.article = new Article(
-      'Angular 2',
-      'http://angular.io',
-      10);
-  }
-
-  ngOnInit() {
-  }
-
-  voteUp() {
+  voteUp(): boolean {
     this.article.voteUp();
     return false;
   }
 
-  voteDown() {
+  voteDown(): boolean {
     this.article.voteDown();
     return false;
+  }
+
+  ngOnInit() {
   }
 
 }
